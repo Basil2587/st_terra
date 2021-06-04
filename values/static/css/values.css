@@ -1,0 +1,156 @@
+/* Страница "Мои ценности" */
+
+.main-content-values {
+    margin: 38px 41px 32px 40px;
+    display: grid;
+    grid-template-columns: 0;
+    grid-template-rows: 0;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;  
+}
+
+.main-content-values span {
+    color: #25315B;
+}
+
+.block-values { 
+    min-width: 262px;
+    height: 346px;
+    background: white;
+    border-radius: 15px;
+    grid-area: 1 / 1 / 5 / 4; 
+}
+
+.values-head {
+    display: flex;
+    justify-content: space-between;
+    margin: 23px 26px 16px 16px;
+}
+
+.block-values span { 
+    display: flex;
+    margin: 0px 16px 8px 16px;
+}
+
+
+.block-principles { 
+    min-width: 262px;
+    height: 346px;
+    background: white;
+    border-radius: 15px;
+    grid-area: 1 / 4 / 5 / 7; 
+}
+
+.block-principles span {
+    display: flex;
+    margin: 0 16px;
+    padding-bottom: 8px;
+}
+
+.block-remember { 
+    min-width: 544px;
+    height: 150px;
+    background: white;
+    border-radius: 15px;
+    grid-area: 5 / 1 / 7 / 7; 
+}
+
+.block-remember .remember-head {
+    display: flex;
+    justify-content: space-between;
+    margin: 23px 26px 0px 16px;
+}
+
+.block-remember li {
+    color: #25315B;
+    font-size: 15px;
+    margin: 0px 0px 0px 50px;
+}
+
+.block-remember li::marker {
+     font-size: 25px;
+}
+
+
+.block-group { 
+    min-width: 544px;
+    height: 176px;
+    background: white;
+    border-radius: 15px;
+    grid-area: 7 / 1 / 9 / 7; 
+}
+
+.block-group img { 
+    margin: 29px 33px 0px 45px;
+}
+
+.block-algorithms { 
+    min-width: 544px;
+    height: 712px;
+    background: white;
+    border-radius: 15px;
+    grid-area: 1 / 7 / 9 / 13; 
+}
+
+.block-algorithms .algorithms-head {
+    display: flex;
+    justify-content: space-between;
+    margin: 23px 29px 8px 23px;
+}
+
+.block-algorithms .algorithms-content {
+    display: flex;
+    margin: 0 27px;
+}
+
+.block-algorithms .business-head h3 {
+    margin-bottom: 16px;
+    color: #25315B;
+}
+
+.block-algorithms .business-head .algorithms-content-block {
+    width: 235px;
+    height: 590px;
+    background: #f2f9ff;
+    margin-right: 20px;
+    border-top: 5px solid #64BDFF;
+    grid-area: 2 / 7 / 9 / 10;
+}
+
+.block-algorithms .business-head .relationships-content {
+    width: 235px;
+    height: 590px;
+    background: #f8f5fe;
+    border-top: 5px solid #B97EFF;
+    grid-area: 2 / 10 / 9 / 13; 
+}
+
+.block-algorithms .business-head .content {
+    display: flex;
+    flex-direction: column;
+    padding-top: 17px;
+}
+
+.block-algorithms .business-head .content .notes {
+    border-radius: 5px;
+    background: white;
+    padding: 7px 21px 7px 7px;
+    margin: 0px 15px 8px 15px;
+}
+
+.edit-save {
+    width: 20px;
+    height: 20px;
+    content: url("../icons/save.svg");
+    background-color:#25315B;
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+.span_list {
+    display: flex;
+    align-items: center;
+}

@@ -1,0 +1,128 @@
+/* .list {
+    height: 100vh;
+} */
+
+.modal-container {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    max-width: 365px;
+    margin: 30px auto;
+    height: 507px;
+    width: 450px;
+    border-radius: 15px;
+}
+
+.modal-content {
+    padding: 65px;
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    cursor: pointer;
+}
+
+.modal-trash {
+    position: absolute;
+    top: 15px;
+    right: 55px;
+    cursor: pointer;
+}
+
+.modal-input {
+    width: 100%;
+    outline: none;
+    border: none;
+    border-bottom: solid 1px #25315B;
+}
+
+.modal-vector {
+    position: absolute;
+    top: 120px;
+    left: 23px;
+}
+
+.modal-bottom {
+    margin: 25px 0;
+}
+
+.modal-textarea {
+    outline: none;
+    border: none;
+    margin-top: 28px;
+    height: 100px;
+    width: 100%;
+    background-color: #F6F5FA;
+    border-radius: 5px;
+}
+
+.modal-textarea::placeholder {
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.modal-text {
+    font-family: Inter;
+    font-size: 16px;
+    line-height: 20px;
+    color: #25315B;
+}
+
+.modal-icon {
+    margin: 0 15px 0 -20px;
+}
+
+.modal-btn {
+    width: 149px;
+    height: 46px;
+    position: absolute;
+    bottom: 18px;
+    right: 15px;
+}
+
+#title-error {
+    color: red;
+    font-size: 13px;
+}
+
+#description-error {
+    font-size: 13px;
+    color: red;
+}
+
+
+.form-select {
+    width: 100%;
+    border: none;
+    outline: none;
+    -webkit-appearance: none;
+    padding: 10px;
+    position: relative;
+    transition: .3s;
+}
+
+.arrow::after {
+    content: url(../../../../img/arrow.334.png);
+    position: absolute;
+    right: 30px;
+    bottom: 88px;
+}
+
+.square {
+    content: '';
+    position: absolute;
+    bottom: 101px;
+    left: 45px;
+    width: 16px;
+    height: 16px;
+    border-radius: 5px;
+}
+
+
+
+

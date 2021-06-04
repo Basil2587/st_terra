@@ -1,0 +1,90 @@
+
+<div>
+    <h1>Планы месяца</h1>
+    {% for item in month_plan %}
+    <label >
+        <input type="checkbox" />
+        <span>{{ item.data }}</span><br>
+        <span>{{ item.done }}</span>
+    </label>
+    {% endfor %}
+</div>
+
+<div>
+    <h1>Планы следующего месяца</h1>
+    {% for item in next_month_plan %}
+    <label >
+        <input type="checkbox" />
+        <span>{{ item.data }}</span><br>
+        <span>{{ item.done }}</span>
+    </label>
+    {% endfor %}
+</div>
+
+<div>
+    <h1>Планы недели</h1>
+    {% for item in week_plan %}
+    <label >
+        <input type="checkbox" />
+        <span>{{ item.data }}</span><br>
+        <span>{{ item.done }}</span>
+    </label>
+    {% endfor %}
+</div>
+
+<div>
+    <h1>Планы следующей недели</h1>
+    {% for item in next_week_plan %}
+    <label >
+        <input type="checkbox" />
+        <span>{{ item.data }}</span><br>
+        <span>{{ item.done }}</span>
+    </label>
+    {% endfor %}
+</div>
+
+<div>
+    <h1>Цели месяца</h1>
+    {% for item in month_target %}
+    <label >
+        <input type="checkbox" />
+        <span>{{ item.data }}</span><br>
+        <span>{{ item.done }}</span>
+    </label>
+    {% endfor %}
+</div>
+
+<div>
+    <h1>Цели следующего месяца</h1>
+    {% for item in next_month_target %}
+    <label >
+        <input type="checkbox" />
+        <span>{{ item.data }}</span><br>
+        <span>{{ item.done }}</span>
+    </label>
+    {% endfor %}
+</div>
+
+<div>
+    <h1>Цели недели</h1>
+    {% for item in week_target %}
+    <label >
+        <input type="checkbox" />
+        <span>{{ item.data }}</span><br>
+        <span>{{ item.done }}</span>
+    </label>
+    {% endfor %}
+</div>
+
+<div>
+    <h1>Цели следующей недели</h1>
+    {% for item in next_week_target %}
+    <label >
+        <input type="checkbox" />
+        <span>{{ item.data }}</span><br>
+        <span>{{ item.done }}</span>
+    </label>
+    {% endfor %}
+</div>
+
+

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мои ценности</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/main.css'%}">
+    <link rel="stylesheet" href="{% static 'css/values.css'%}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="grid_container grid_active">
+        <div class="sidenav">
+            <h1 style="display: none;" class="logo_h">S</h1>
+            <h1 class="logo_h">Samo</h1>
+            <hr>
+            <ul>
+                <li style="margin-bottom: 20px;">
+                    <a class="closebtn">
+                        <img class="toggle active" src="{% static 'icons/sidebar/open.svg' %}" alt="close"><span>Свернуть</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="index.html"><img class="img img_active" src="{% static 'icons/sidebar/balance-wheels.svg' %}"
+                            alt="balance"><span>Колесо
+                            баланса</span></a>
+                </li>
+                <li class="#">
+                    <a href="#"><img class="img_nav img_active" src="{% static 'icons/sidebar/diary.svg' %}"
+                            alt="diary"><span>Дневник</span></a>
+                </li>
+                <li>
+                    <a href="#"><img class="img_nav img_active" src="{% static 'icons/sidebar/calendar.svg' %}"
+                            alt="calendar"><span>Календарь</span></a>
+                </li>
+                <li>
+                    <a href="#"><img class="img_nav img_active" src="{% static 'icons/sidebar/purposes.svg' %}" alt="purpose"><span>Мои
+                            цели</span></a>
+                </li>
+                <li class="active_li">
+                    <a href="#"><img class="img_nav img_active" src="{% static 'icons/sidebar/values.svg' %}" alt="values"><span>Мои
+                            ценности</span></a>
+                </li>
+                <li>
+                    <a href="#"><img class="img_nav img_active" src="{% static 'icons/sidebar/results.svg' %}"
+                            alt="results"><span>Итоги</span></a>
+                </li>
+                <li style="margin-bottom: 108px;">
+                    <a href="#"><img class="img_nav img_active" src="{% static 'icons/sidebar/list.svg' %}" alt="list"><span>Список
+                            книг<br> и
+                            фильмов</span></a>
+                </li>
+                <li style="margin-bottom: 8px;">
+                    <a href="#"><img class="img_nav img_active" src="{% static 'icons/sidebar/settings.svg' %}"
+                            alt="settings"><span>Настройки</span></a>
+                </li>
+            </ul>
+            <button class="btn btn_active">Выйти</button>
+        </div>
+        <div class="header">
+            <h1>Мои ценности</h1>
+            <div class="header_profile">
+                <div class="header-icons">
+                    <img class="icon_search" src="{% static 'icons/search.svg' %}" alt="search">
+                    <img class="icon_push" src="{% static 'icons/push.svg' %}" alt="push">
+                </div>
+                <div class="profile">
+                    <span>Ксюша Донская</span>
+                    <img src="{% static 'img/profile.png' %}" alt="profile">
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            <div class="main-content-values">
+                <div class="block-values">
+                    <div class="values-head">
+                        <h2>Ценности</h2>
+                        <img src="{% static 'icons/pencil.svg' %}" alt="edit">
+                    </div>
+                    <div id="my-values">
+
+                    </div>
+                </div>
+                <div class="block-principles">
+                    <div class="values-head">
+                        <h2>Принципы</h2>
+                        <img class="edit" src="{% static 'icons/pencil.svg' %}" alt="edit">
+                    </div>
+                    <div class="content">
+                        <div class="input-list hide">
+                            <input type="text" id="input"></input>
+                            <button id="todo">Добавить</button>
+                        </div>
+                    </div>
+                    <div id="my-principles">
+
+                    </div>
+                </div>
+                <div class="block-remember">
+                    <div class="remember-head">
+                        <h2>Помнить</h2>
+                        <img src="{% static 'icons/pencil.svg' %}" alt="edit">
+                    </div>
+                    <ul id="my-quotes">
+                    </ul>
+                </div>
+                <div class="block-group">
+                    <img src="{% static 'img/group.svg' %}" alt="Group">
+                </div>
+                <div class="block-algorithms">
+                    <div class="algorithms-head">
+                        <h2>Алгоритмы</h2>
+                        <img src="{% static 'icons/plus_values.svg' %}" alt="edit">
+                    </div>
+                    <div class="algorithms-content">
+                        <div class="block-business">
+                            <div class="business-head">
+                                <h3>Бизнес</h3>
+                                <div class="algorithms-content-block">
+                                    <div class="content" id="content-business">
+
+                                    </div>
+                                    <div style="margin-top: 85px; text-align: center;">
+                                        <img src="{% static 'icons/plus_alg.svg' %}" alt="plus_alg">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="block-relationships">
+                            <div class="business-head">
+                                <h3>Отношения</h3>
+                                <div class="relationships-content">
+                                    <div class="content" id="content-relationships">
+                                    </div>
+                                    <div style="margin-top: 85px; text-align: center;">
+                                        <img src="{% static 'icons/plus_alg.svg' %}" alt="plus_alg">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="{% static 'js/scripts.js' %}"></script>
+        <script src="{% static 'js/json.js' %}"></script>
+        
+        <!-- <script src="js/xhp.js"></script> -->
+</body>
+
+</html>
