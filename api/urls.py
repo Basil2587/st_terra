@@ -17,10 +17,8 @@ from api.views import (
     PrincipleViewSet,
     QuoteViewSet,
     AlgorithmBusinessViewSet,
-    AlgorithmRelationshipsViewSet,
-    Two_MViewSet,
-    Six_MViewSet,
-    One_yearsViewSet
+    AlgorithmRelationshipsViewSet
+from goals.views import MyGoalsViewSet
 )
 from . import views
 from rest_framework_simplejwt.views import (
@@ -39,9 +37,7 @@ router.register("lists/films", FilmViewSet, basename="films")
 router.register("lists/wishes", WishViewSet, basename="wishes")
 router.register("lists/travels", TravelViewSet, basename="travels")
 
-router.register("goals/two_mounth", Two_MViewSet, basename="two_mounth")
-router.register("goals/six_mounth", Six_MViewSet, basename="six_mounth")
-router.register("goals/one_years", One_yearsViewSet, basename="one_years")
+router.register("goals/goals", MyGoalsViewSet, basename="goals")
 
 router.register("values/values", ValueViewSet, basename="values")
 router.register("values/principles", PrincipleViewSet, basename="principles")

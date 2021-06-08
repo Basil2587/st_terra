@@ -14,9 +14,9 @@ def index(request):
     }
 
     result = requests.get(
-        "http://localhost:8000/api/v1/all/",
+        "http://localhost:8000/api/v1/results/",
         data=params,
-    ).json()
+         ).json()
 
     return render(
          request,

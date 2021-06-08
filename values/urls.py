@@ -1,7 +1,9 @@
 from django.urls import path, include
-from . import views
 
+from results.views import index
+from values.views import values
 
 urlpatterns = [
-    path("values/", views.values, name="values")
+    path("", index, name="index"),
+    path("values/", values, name="values")
 ]

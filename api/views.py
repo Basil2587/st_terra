@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404
 from requests.api import request
 from rest_framework import viewsets
 
@@ -13,7 +13,6 @@ from api.serializers import (
     ValueSerializer, AlgorithmSerializer, GoalSerializer)
 
 from datetime import date, datetime
-from django.contrib.auth.decorators import login_required
 import requests
 import arrow
 
@@ -445,21 +444,21 @@ def get_goals(user):
 
     two_mounth, six_mounth, one_years = [], [], []
     for my_goal in my_goals:
-        if my_goal.type == GoalType.objects.filter(slug="2 месяца")[0]:
+        if my_goal.type == GoalType.objects.filter(slug="two_mounth")[0]:
             two_mounth.append({
                 "id": my_goal.id,
                 "data": my_goal.text,
                 "image": my_goal.image,
                 "user_id": my_goal.author.id,
             })
-        elif my_goal.type == GoalType.objects.filter(slug="6 месяцев")[0]:
+        elif my_goal.type == GoalType.objects.filter(slug="six_mounth")[0]:
             six_mounth.append({
                 "id": my_goal.id,
                 "data": my_goal.text,
                 "image": my_goal.image,
                 "user_id": my_goal.author.id,
             })
-        elif my_goal.type == GoalType.objects.filter(slug="1 год")[0]:
+        elif my_goal.type == GoalType.objects.filter(slug="one_years")[0]:
             one_years.append({
                 "id": my_goal.id,
                 "data": my_goal.text,
