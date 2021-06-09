@@ -30,6 +30,7 @@ def get_goals(user):
     two_month_date = add_months(today, 2)
     six_month_date = add_months(today, 6)
     year_end_date = add_months(today, 12)
+
     m = datetime.now().month
     f = lambda m: m-12 if m>12 else m
     y = datetime.now().year
@@ -37,7 +38,7 @@ def get_goals(user):
     start_date = date(y, m, 1)
     end_date = date(y, f(m+1), ndays)
 
-    my_goals = user.mygoals.filter(date__range=[start_date, end_date])
+    my_goals = user.m_goals.filter(date__range=[start_date, end_date])
 
     two_mounth, six_mounth, one_years = [], [], []
 
