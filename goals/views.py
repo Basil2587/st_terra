@@ -32,11 +32,10 @@ def get_goals(user):
     year_end_date = add_months(today, 12)
 
     m = datetime.now().month
-    f = lambda m: m-12 if m>12 else m
     y = datetime.now().year
-    ndays = (date(y, m+2, 1) - date(y, m+1, 1)).days
+    ndays = calendar.monthrange(y, m)[1]
     start_date = date(y, m, 1)
-    end_date = date(y, f(m+1), ndays)
+    end_date = date(y, m, ndays)
 
     my_goals = user.m_goals.filter(date__range=[start_date, end_date])
 
