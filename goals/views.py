@@ -1,3 +1,4 @@
+
 from django.shortcuts import get_object_or_404
 
 from rest_framework import viewsets
@@ -6,12 +7,11 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from django.contrib.auth import get_user_model
-from api.serializers import GoalSerializer
+from .serializers import GoalSerializer
 import calendar
 from datetime import date, datetime
 import requests
 
-from goals.models import GoalType, MyGoals
 
 
 User = get_user_model()
@@ -22,7 +22,8 @@ def add_months(sourcedate, months):
     year = sourcedate.year + month // 12
     month = month % 12 + 1
     day = min(sourcedate.day, calendar.monthrange(year, month)[1])
-    return datetime.date(year, month, day)
+    print(year, month, day)
+    return date(year, month, day)
 
 
 def get_goals(user):
@@ -37,7 +38,10 @@ def get_goals(user):
     start_date = date(y, m, 1)
     end_date = date(y, m, ndays)
 
-    my_goals = user.m_goals.filter(date__range=[start_date, end_date])
+    print(year_end_date)
+    print(start_date, end_date)
+
+    my_goals = user.my_goals.filter(date__range=[today, year_end_date])
 
     two_mounth, six_mounth, one_years = [], [], []
 
@@ -46,21 +50,24 @@ def get_goals(user):
             two_mounth.append({
                 "id": my_goal.id,
                 "data": my_goal.text,
-                "image": my_goal.image,
+                "status": my_goal.done,
+                "date": my_goal.date,
                 "user_id": my_goal.author.id,
             })
         if my_goal.date >= two_month_date and my_goal.date <= six_month_date:
             six_mounth.append({
                 "id": my_goal.id,
                 "data": my_goal.text,
-                "image": my_goal.image,
+                "status": my_goal.done,
+                "date": my_goal.date,
                 "user_id": my_goal.author.id,
                 })
         if my_goal.date >= six_month_date and my_goal.date <= year_end_date:
             one_years.append({
                 "id": my_goal.id,
                 "data": my_goal.text,
-                "image": my_goal.image,
+                "status": my_goal.done,
+                "date": my_goal.date,
                 "user_id": my_goal.author.id,
                 })
 
@@ -85,7 +92,7 @@ class MyGoalsViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         user = get_object_or_404(User, username=self.request.user)
-        return user.targets.all()
+        return user.my_goals.all()
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
