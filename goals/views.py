@@ -1,4 +1,3 @@
-
 from django.shortcuts import get_object_or_404
 
 from rest_framework import viewsets
@@ -7,12 +6,11 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from django.contrib.auth import get_user_model
-from .serializers import GoalSerializer
+from .serializers import GoalSerializer, MissionSerializer
 import calendar
 from datetime import date, datetime
-import requests
-
-
+from django_filters.rest_framework import DjangoFilterBackend
+from calendars.models import Sphere
 
 User = get_user_model()
 
@@ -44,37 +42,55 @@ def get_goals(user):
     my_goals = user.my_goals.filter(date__range=[today, year_end_date])
 
     two_mounth, six_mounth, one_years = [], [], []
+    (family_and_love, personal_growth, charity, investment,
+        environment_and_friends, brightness_of_life, health_and_sports,
+        business_and_career) = [], [], [], [], [], [], [], []
 
     for my_goal in my_goals:
+        data = {
+                "id": my_goal.id,
+                "data": my_goal.text,
+                "date": my_goal.date,
+                "user_id": my_goal.author.id,
+                "image": my_goal.image,
+            }
+
         if my_goal.date >= today and my_goal.date <= two_month_date:
-            two_mounth.append({
-                "id": my_goal.id,
-                "data": my_goal.text,
-                "status": my_goal.done,
-                "date": my_goal.date,
-                "user_id": my_goal.author.id,
-            })
-        if my_goal.date >= two_month_date and my_goal.date <= six_month_date:
-            six_mounth.append({
-                "id": my_goal.id,
-                "data": my_goal.text,
-                "status": my_goal.done,
-                "date": my_goal.date,
-                "user_id": my_goal.author.id,
-                })
-        if my_goal.date >= six_month_date and my_goal.date <= year_end_date:
-            one_years.append({
-                "id": my_goal.id,
-                "data": my_goal.text,
-                "status": my_goal.done,
-                "date": my_goal.date,
-                "user_id": my_goal.author.id,
-                })
+            two_mounth.append(data)
+        elif my_goal.date >= two_month_date and my_goal.date <= six_month_date:
+            six_mounth.append(data)
+        elif my_goal.date >= six_month_date and my_goal.date <= year_end_date:
+            one_years.append(data)
+
+        if my_goal.sphere == Sphere.objects.get(slug="family_and_love"):
+            family_and_love.append(data)
+        elif my_goal.sphere == Sphere.objects.get(slug="personal_growth"):
+            personal_growth.append(data)
+        elif my_goal.sphere == Sphere.objects.get(slug="charity"):
+            charity.append(data)
+        elif my_goal.sphere == Sphere.objects.get(slug="investment"):
+            investment.append(data)
+        elif my_goal.sphere == Sphere.objects.get(slug="environment_and_friends"):
+            environment_and_friends.append(data)
+        elif my_goal.sphere == Sphere.objects.get(slug="brightness_of_life"):
+            brightness_of_life.append(data)
+        elif my_goal.sphere == Sphere.objects.get(slug="health_and_sports"):
+            health_and_sports.append(data)
+        elif my_goal.sphere == Sphere.objects.get(slug="business_and_career"):
+            business_and_career.append(data)
 
     result = {
         "two_mounth": two_mounth,
         "six_mounth": six_mounth,
         "one_years": one_years,
+        "family_and_love": family_and_love,
+        "personal_growth": personal_growth,
+        "charity": charity,
+        "investment": investment,
+        "environment_and_friends": environment_and_friends,
+        "brightness_of_life": brightness_of_life,
+        "health_and_sports": health_and_sports,
+        "business_and_career": business_and_career,
     }
 
     return result
@@ -89,10 +105,23 @@ def goals(request):
 
 class MyGoalsViewSet(viewsets.ModelViewSet):
     serializer_class = GoalSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['done', 'favorite']
 
     def get_queryset(self):
-        user = get_object_or_404(User, username=self.request.user)
+        user = get_object_or_404(User, email=self.request.user)
         return user.my_goals.all()
+
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
+
+
+class MyMissionViewSet(viewsets.ModelViewSet):
+    serializer_class = MissionSerializer
+
+    def get_queryset(self):
+        user = get_object_or_404(User, email=self.request.user)
+        return user.my_mission.all()
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
